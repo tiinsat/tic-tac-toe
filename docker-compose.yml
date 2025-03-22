@@ -1,0 +1,14 @@
+version: '3.8
+
+services:
+
+  web:
+    image: node:20
+    conteiner_name: web_dev
+    working_dir: /workspace
+    volumes:
+      - ..:/wokspaces:cached
+    command: tail -f /dev/null
+    ports:
+      - "8080:8080"
+      
