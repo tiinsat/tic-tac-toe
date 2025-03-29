@@ -43,3 +43,15 @@ app.post('/pai/v1/login',async(req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+app.post('/api/v1/login', async(req, res) => {
+    const {email, senha }= req.body;
+    const usuario = await prisma.usuario.findUnique({where:{email, senha}});
+
+    if(usuario == null){
+        return res.status(401).json({error:"Credenciais Inválidas"});
+    }
+    else{
+        return res.status(200).json(usuario);
+    }
+})
