@@ -35,6 +35,9 @@ app.post("/api/v1/usuarios", async (req, res) =>{
     res.status(201).json(usuario);
 });
 
+app.post('/pai/v1/login',async(req, res) => {
+    res.status(200).joson('');
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
