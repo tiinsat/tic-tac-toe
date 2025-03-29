@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Tic Tac Toe</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -34,32 +35,6 @@
   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $("#cadastroForm").on("submit", function(e) {
-        e.preventDefault();
-  
-       
-        const email = $("#email").val();
-        const senha = $("#senha").val();
-       
-  
-
-  
-        $.ajax({
-          url: "/api/v1/usuarios",
-          method: "POST",
-          contentType: "application/json",
-          data: JSON.stringify({ nome, email, senha, username, avatar }),
-          success: function(response) {
-            alert("Usuário cadastrado com sucesso!");
-            $("#cadastroForm")[0].reset();
-          },
-          error: function(xhr) {
-            const msg = xhr.responseJSON?.erro || "Erro ao cadastrar.";
-            alert(msg);
-          }
-        });
-      });
-    </script><script>
         $("#cadastroForm").on("submit", function (e) {
             e.preventDefault();
 
