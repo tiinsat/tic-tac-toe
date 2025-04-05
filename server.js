@@ -36,13 +36,27 @@ app.post("/api/v1/usuarios", async (req, res) =>{
     res.status(201).json(usuario);
 });
 
-app.post('/pai/v1/login',async(req, res) => {
-    res.status(200).joson('');
-});
+// app.post("/api/v1/conexao", async(data, response))
+app.post("/api/v1/conexao", async(req, res)=>{
+    // console.log(req, res);
+    const {
+        id_usuario_a,
+        id_usuario_b
+    } = req.body;
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+    console.log(prisma.conexao)
+
+    // const conexao = await prisma.conexao.create({
+    //     data: {
+    //         id_usuario_a,
+    //         id_usuario_b
+    //     }
+    // });
+
+    // console.log(conexao);
+    // res.status(201).json(conexao);
+})
+
 
 app.post('/api/v1/login', async(req, res) => {
     const {email, senha }= req.body;
@@ -55,3 +69,8 @@ app.post('/api/v1/login', async(req, res) => {
         return res.status(200).json(usuario);
     }
 })
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
