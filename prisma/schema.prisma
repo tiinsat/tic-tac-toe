@@ -14,4 +14,4 @@ model usuario {
   senha       String
   username    String
   avatar      String
-}
+}aaa
