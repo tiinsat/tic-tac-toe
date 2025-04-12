@@ -1,49 +1,136 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  const id_partida = 1; // permanece todo o tempo do mesmo jogo
-  const id_usuario = 1; // muda a cada rodada
-  const area_jogada = 7; // nao pode se repetir
-  const peca_do_jogador = "x"; // alterna entre o x e o
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .game-container {
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        max-width: 1200px;
+        margin: 30 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #333;
+      }
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .painel {
+        display: flex;
+        justify-content: space-between;
+      }
+      .painel-jogador {
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        padding: 20px;
+        width: 200px;
+        padding: 15px;
+      }
+      .avatar {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+      }
+      .tabuleiro {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 320px;
+      }
+      .celula {
+        width: 100px;
+        height: 100px;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        color: #333;
+        align-items: center;
+        font-size: 40px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="top-bar">
+        
+      </div>
 
-  $.ajax({
-    url: "/api/v1/partidaHistorico",
-    method: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({
-      id_partida,
-      id_usuario,
-      area_jogada,
-      peca_do_jogador,
-    }),
-    success: function (response) {
-      console.log("certo", response);
-      // Swal.fire({
-      //     title: "Login efetuado!",
-      //     icon: "success"
-      // });
-      // $("#cadastroForm")[0].reset();
-    },
-    error: function (error) {
-      console.log("erro", error);
+    <div class="tabuleiro">
+      <div class="celula" id="1"></div>
+      <div class="celula" id="2"></div>
+      <div class="celula" id="3"></div>
+      <div class="celula" id="4"></div>
+      <div class="celula" id="5"></div>
+      <div class="celula" id="6"></div>
+      <div class="celula" id="7"></div>
+      <div class="celula" id="8"></div>
+      <div class="celula" id="9"></div>
+    </div>
+  </body>
+</html>
 
-      Swal.fire({
-        title: error.responseJSON,
-        icon: "error",
-      });
+<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const id_partida = 1; // permanece todo o tempo do mesmo jogo
+    const id_usuario = 1; // muda a cada rodada
+    const area_jogada = 7; // nao pode se repetir
+    const peca_do_jogador = "x"; // alterna entre o x e o
 
-      // if (xhr.status == 401) {
-      //     Swal.fire({
-      //         title: "Usuário não encontrado!",
-      //         icon: "error"
-      //     });
-      // }
-      // else {
-      //     const msg = xhr.responseJSON?.erro || "Erro ao cadastrar.";
-      //     alert(msg);
-      // }
-    },
-  });
+    $.ajax({
+      url: "/api/v1/partidaHistorico",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        id_partida,
+        id_usuario,
+        area_jogada,
+        peca_do_jogador,
+      }),
+      success: function (response) {
+        console.log("certo", response);
+        // Swal.fire({
+        //     title: "Login efetuado!",
+        //     icon: "success"
+        // });
+        // $("#cadastroForm")[0].reset();
+      },
+      error: function (error) {
+        console.log("erro", error);
 
-  // $.ajax({url:...., method: ..., contentType: "application/json", data:..., success: function(response){}, error: function(error){}})
-</script>
+        Swal.fire({
+          title: error.responseJSON,
+          icon: "error",
+        });
+
+        // if (xhr.status == 401) {
+        //     Swal.fire({
+        //         title: "Usuário não encontrado!",
+        //         icon: "error"
+        //     });
+        // }
+        // else {
+        //     const msg = xhr.responseJSON?.erro || "Erro ao cadastrar.";
+        //     alert(msg);
+        // }
+      },
+    });
+
+    // $.ajax({url:...., method: ..., contentType: "application/json", data:..., success: function(response){}, error: function(error){}})
+  </script> -->

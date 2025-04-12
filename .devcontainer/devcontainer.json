@@ -5,9 +5,10 @@
   "service": "web",
   "workspaceFolder": "/workspace",
   "extensions": [
-      "ms-vscode.vscode-node-azure-pack",
-      "esbenp.prettier-vscode",
-      "ms-azuretools.vscode-docker"
+    "ms-vscode.vscode-node-azure-pack",
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker",
+    "Codeium.codeium"
   ],
   "forwardPorts": [
       80,
