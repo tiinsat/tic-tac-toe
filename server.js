@@ -62,11 +62,7 @@ app.get("/api/v1/conexao", async (req, res) => {
 
 //TODO: 1.a Criar um endpoint para retornar a partida com status criado.
 app.get("/api/v1/partida/em-andamento", async (req, res) => {
-<<<<<<< HEAD
-    const partida = await prisma.conexao.findMany({
-=======
     const partida = await prisma.partida.findMany({
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
         where: {
             status: 'criado'
         }
@@ -80,15 +76,9 @@ app.post("/api/v1/partida", async (req, res) => {
         id_usuario        
     } = req.body;
 
-<<<<<<< HEAD
-    const partida = await prisma.conexao.create({
-        data: {
-            id_usuario_a: id_usuario,
-=======
     const partida = await prisma.partida.create({
         data: {
-            id_usuario_a,
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
+            id_usuario_a: id_usuario,
             id_usuario_b : null,
             status: 'criado'
         }
@@ -103,11 +93,7 @@ app.put("/api/v1/partida/:id_partida", async (req, res) => {
     const { id_partida } = req.params;
     const { id_usuario_b } = req.body;
 
-<<<<<<< HEAD
-    const partida = await prisma.conexao.update({
-=======
     const partida = await prisma.partida.update({
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
         where: { id: Number(id_partida) },
         data: {
             id_usuario_b,
@@ -117,7 +103,6 @@ app.put("/api/v1/partida/:id_partida", async (req, res) => {
 
     res.status(200).json(partida);
 });
-
 
 //TODO: 1.d Criar um endpoint que recebe o id_parida e retorna a última jogada registrada no historico da partida.
 app.get("/api/v1/partida/:id_partida/historico", async (req, res) => {
@@ -131,10 +116,6 @@ app.get("/api/v1/partida/:id_partida/historico", async (req, res) => {
 
     res.status(200).json(partida_historico);
 });
-
-
-
-// data: JSON.stringify({ id_partida, id_usuario, area_jogada,peca_do_jogador }),
 
 app.post("/api/v1/partidaHistorico", async (req, res) => {
     const {
@@ -156,7 +137,7 @@ app.post("/api/v1/partidaHistorico", async (req, res) => {
         }
     })
 
-    if(ultimaJogada['id_usuario'] == id_usuario){
+    if(ultimaJogada && ultimaJogada['id_usuario'] == id_usuario){
         res.status(422).json('Não é sua vez de jogar');
     }
     else if(localOcupado != null){
@@ -176,7 +157,6 @@ app.post("/api/v1/partidaHistorico", async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
 //criar um endpoint get que retornar os dados do usuario por meio do id
 app.get('/api/v1/usuario/:id', async (req, res) => {
     const { id } = req.params;
@@ -188,18 +168,16 @@ app.get('/api/v1/usuario/:id', async (req, res) => {
         return res.status(404).json({ error: "Usuário não encontrado" });
     }
 
-      const response = {
-            id: usuario.id,
-            nome: usuario.nome,
-            email: usuario.email,
-            username: usuario.username,
-            avatar: usuario.avatar
-        };
+    const response = {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email,
+        username: usuario.username,
+        avatar: usuario.avatar
+    };
     return res.status(200).json(response);
 });
 
-=======
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
 app.post('/api/v1/login', async (req, res) => {
     const { email, senha } = req.body;
     const usuario = await prisma.usuario.findUnique({ where: { email, senha } });
@@ -208,7 +186,6 @@ app.post('/api/v1/login', async (req, res) => {
         return res.status(401).json({ error: "Credenciais Inválidas" });
     }
     else {
-<<<<<<< HEAD
         const response = {
             id: usuario.id,
             nome: usuario.nome,
@@ -217,12 +194,8 @@ app.post('/api/v1/login', async (req, res) => {
             avatar: usuario.avatar
         };
         return res.status(200).json(response);
-=======
-        return res.status(200).json(usuario);
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
     }
 })
-
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
