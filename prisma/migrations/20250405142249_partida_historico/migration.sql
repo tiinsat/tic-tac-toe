@@ -1,3 +1,4 @@
+
 -- CreateTable
 CREATE TABLE `partida_historico` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,

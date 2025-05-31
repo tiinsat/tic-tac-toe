@@ -1,3 +1,4 @@
+
 -- CreateTable
 CREATE TABLE `conexao` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
