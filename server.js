@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 require('dotenv').config();  
-=======
-
->>>>>>> 3dc5e6a9fa6e8511322f48cb44b2bbbe542ada09
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 const req = require("express/lib/request");
